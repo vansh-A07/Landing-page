@@ -154,7 +154,7 @@ function formValidation(event) {
 
 //page5 animations
 
-moveforward.addEventListener("click",increment);
+moveforward .addEventListener("click",increment);
 movebackward.addEventListener("click",decrement);
 
 function increment(){
