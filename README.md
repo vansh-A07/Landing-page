@@ -10,11 +10,11 @@ To set up the project locally, follow these steps:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/Manas171106/Landing-page.git
+   git clone https://github.com/vansh-A07/Landing-page.git
    ```
 2. **Navigate to the project directory**:
    ```bash
-   cd landing-page-gym
+   cd Landing-page
    ```
 3. **Open the project in your browser**:
    - This project doesn't require additional dependencies.
@@ -39,6 +39,7 @@ Once the project is opened in your browser, you will be able to view the gym’s
 - Keep CSS responsive and avoid unnecessary duplication.
 - Keep JavaScript focused on small, reusable interactions.
 - Test layout changes on both desktop and mobile viewports before committing.
+- Check keyboard navigation and meaningful image alt text when adding new interactive content.
 
 ### How to Contribute
 
