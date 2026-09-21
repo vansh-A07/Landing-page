@@ -144,12 +144,12 @@ function formValidation(event) {
                 button.value="";
                 // i++;
             })
-            typearea.value="give suggestions";
+            typearea.value="";
             sub.value="submit";
             popup.style.display="none";
         }
+    })
 }
-)}
 
 
 //page5 animations
@@ -174,9 +174,10 @@ function decrement(){
         framewidth.style.transform =`translateX(${-x}%)`; //position -25
         currentposition-=1;
     }else{
-        currentposition=4;
-        framewidth.style.transform="translateX(-75%)"
-        x=75;
+        currentposition=num;
+        const lastPosition = (num - 1) * indexcount;
+        framewidth.style.transform =`translateX(-${lastPosition}%)`;
+        x=lastPosition;
 
     }
 }
