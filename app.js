@@ -97,6 +97,7 @@ gsap.from("#image-container .images",{
 
 //page3 animations
 
+
 function flipCard(event) {
     const currentCard = event.currentTarget.closest('.card');
     currentCard.classList.add('flip');
@@ -156,6 +157,18 @@ function formValidation(event) {
 
 moveforward.addEventListener("click",increment);
 movebackward.addEventListener("click",decrement);
+
+// Allow keyboard users to operate the slider controls without a mouse.
+[moveforward, movebackward].forEach((control) => {
+    control.setAttribute("tabindex", "0");
+    control.setAttribute("role", "button");
+    control.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            control === moveforward ? increment() : decrement();
+        }
+    });
+});
 
 function increment(){
     if(currentposition < num){
