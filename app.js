@@ -12,7 +12,6 @@ let sub=document.querySelector("#sub-button");
 let popup=document.querySelector(".popup-message");
 let num=imagewidth.length;
 let inputvalue;
-// let aftersumitvalue=["Full name","Enter Your Email","Enter Phone no.","give suggestions"];
 let currentposition=1;
 let x=100/num;
 let indexcount=x;
@@ -33,9 +32,7 @@ gsap.from("#logo",{
     duration:0.5,
 })
 
-
 //page1 animations
-
 let tlpage1=gsap.timeline()
 
 tlpage1.from("#page1 #hero h1",{
@@ -52,13 +49,7 @@ tlpage1.from("#page1 p , #page1 button",{
     ease: "power2.out"
 },"ab")
 
-//page2 animations
-
-
 //moving circle
-// page2.addEventListener("mouseenter",()=>{
-// })
-
 page2.addEventListener("mousemove",(dets)=>{
     circle.style.display="block";
     gsap.to(circle,{
@@ -79,7 +70,6 @@ page2.addEventListener("mouseleave",(de)=>{
     circle.style.display="none";
 })
 
-
 //image rotation
 gsap.from("#image-container .images",{
     rotate:0,
@@ -96,15 +86,13 @@ gsap.from("#image-container .images",{
 })
 
 //page3 animations
-
-
 function flipCard(event) {
     const currentCard = event.currentTarget.closest('.card');
     currentCard.classList.add('flip');
     currentCard.classList.remove('flipback');
   }
 function flipBack(event) {
-    const currentCard = event.currentTarget.closest('.card'); // Get the specific card
+    const currentCard = event.currentTarget.closest('.card');
     currentCard.classList.add('flipback');
     currentCard.classList.remove('flip');
   }
@@ -118,7 +106,6 @@ document.querySelectorAll('.front button').forEach(button => {
   });
 
 //page4 animations
-
 input.forEach(button =>{
     button.addEventListener("mouseenter",()=>{
         inputvalue=button.placeholder;
@@ -133,7 +120,6 @@ input.forEach(button =>{
 })
 
 function formValidation(event) {
-    // let i=0;
     event.preventDefault();
     gsap.to(popup,{
         display:"block",
@@ -141,9 +127,7 @@ function formValidation(event) {
         duration:2,
         onComplete:()=>{
             input.forEach(button=>{
-                // button.placeholder=aftersumitvalue[i];
                 button.value="";
-                // i++;
             })
             typearea.value="";
             sub.value="submit";
@@ -152,8 +136,11 @@ function formValidation(event) {
     })
 }
 
-
 //page5 animations
+moveforward.setAttribute("aria-label", "Show previous gym image");
+movebackward.setAttribute("aria-label", "Show next gym image");
+moveforward.setAttribute("title", "Previous image");
+movebackward.setAttribute("title", "Next image");
 
 moveforward.addEventListener("click",increment);
 movebackward.addEventListener("click",decrement);
@@ -182,18 +169,32 @@ function increment(){
     }
 }
 function decrement(){
-    if(currentposition > 1){  //position 2 x=50
+    if(currentposition > 1){
         x=x-indexcount;
-        framewidth.style.transform =`translateX(${-x}%)`; //position -25
+        framewidth.style.transform =`translateX(${-x}%)`;
         currentposition-=1;
     }else{
         currentposition=num;
         const lastPosition = (num - 1) * indexcount;
         framewidth.style.transform =`translateX(-${lastPosition}%)`;
         x=lastPosition;
-
     }
 }
 
-
 let timer=setInterval(increment,3000);
+
+// Avoid moving the slider while a keyboard or pointer user is interacting with it.
+function pauseSlider(){
+    clearInterval(timer);
+}
+function resumeSlider(){
+    clearInterval(timer);
+    timer=setInterval(increment,3000);
+}
+
+[moveforward, movebackward].forEach((control) => {
+    control.addEventListener("mouseenter", pauseSlider);
+    control.addEventListener("mouseleave", resumeSlider);
+    control.addEventListener("focusin", pauseSlider);
+    control.addEventListener("focusout", resumeSlider);
+});
