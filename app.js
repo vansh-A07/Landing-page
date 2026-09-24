@@ -198,3 +198,12 @@ function resumeSlider(){
     control.addEventListener("focusin", pauseSlider);
     control.addEventListener("focusout", resumeSlider);
 });
+
+// Pause the autoplay when the tab is hidden to avoid unnecessary work.
+document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+        pauseSlider();
+    } else {
+        resumeSlider();
+    }
+});
