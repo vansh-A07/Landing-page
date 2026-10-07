@@ -11,7 +11,6 @@ let typearea=document.querySelector("textarea");
 let sub=document.querySelector("#sub-button");
 let popup=document.querySelector(".popup-message");
 let num=imagewidth.length;
-let inputvalue;
 let currentposition=1;
 let x=100/num;
 let indexcount=x;
@@ -106,16 +105,16 @@ document.querySelectorAll('.front button').forEach(button => {
   });
 
 //page4 animations
-input.forEach(button =>{
-    button.addEventListener("mouseenter",()=>{
-        inputvalue=button.placeholder;
-        button.placeholder="";
+input.forEach(field =>{
+    field.addEventListener("mouseenter",()=>{
+        field.dataset.originalPlaceholder = field.placeholder;
+        field.placeholder="";
     })
 })
 
-input.forEach(button =>{
-    button.addEventListener("mouseleave",()=>{
-        button.placeholder=inputvalue;
+input.forEach(field =>{
+    field.addEventListener("mouseleave",()=>{
+        field.placeholder = field.dataset.originalPlaceholder || field.placeholder;
     })
 })
 
