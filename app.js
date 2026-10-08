@@ -87,22 +87,26 @@ gsap.from("#image-container .images",{
 //page3 animations
 function flipCard(event) {
     const currentCard = event.currentTarget.closest('.card');
-    currentCard.classList.add('flip');
-    currentCard.classList.remove('flipback');
-  }
+    if (currentCard) {
+        currentCard.classList.add('flip');
+        currentCard.classList.remove('flipback');
+    }
+}
 function flipBack(event) {
     const currentCard = event.currentTarget.closest('.card');
-    currentCard.classList.add('flipback');
-    currentCard.classList.remove('flip');
-  }
-  
+    if (currentCard) {
+        currentCard.classList.add('flipback');
+        currentCard.classList.remove('flip');
+    }
+}
+
 document.querySelectorAll('.front button').forEach(button => {
     button.addEventListener('click', flipCard);
-  });
-  
-  cards.forEach(cards => {
-    cards.addEventListener('mouseleave', flipBack);
-  });
+});
+
+cards.forEach(card => {
+    card.addEventListener('mouseleave', flipBack);
+});
 
 //page4 animations
 input.forEach(field =>{
