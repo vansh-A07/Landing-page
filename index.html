@@ -147,10 +147,10 @@
         <form onsubmit="formValidation(event)">
           <fieldset>
             <legend>Feedback</legend>
-            <input type="text" id="Name" placeholder="Full Name" autocomplete="name" required />
-            <input type="email" placeholder="Enter Your Email" autocomplete="email" required />
-            <input type="tel" placeholder="Enter Phone No." inputmode="tel" autocomplete="tel" required />
-            <textarea id="textbox" placeholder="give suggestions" required></textarea>
+            <input type="text" id="Name" placeholder="Full Name" aria-label="Full Name" autocomplete="name" required />
+            <input type="email" placeholder="Enter Your Email" aria-label="Email address" autocomplete="email" required />
+            <input type="tel" placeholder="Enter Phone No." aria-label="Phone number" inputmode="tel" autocomplete="tel" required />
+            <textarea id="textbox" placeholder="give suggestions" aria-label="Suggestions or feedback" required></textarea>
             <input id="sub-button" type="submit" value="Submit" />
           </fieldset>
         </form>
