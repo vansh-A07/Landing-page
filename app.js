@@ -10,6 +10,7 @@ let input=document.querySelectorAll("input");
 let typearea=document.querySelector("textarea");
 let sub=document.querySelector("#sub-button");
 let popup=document.querySelector(".popup-message");
+let registerCta=document.querySelector("#register-cta");
 let num=imagewidth.length;
 let currentposition=1;
 let x=100/num;
@@ -47,6 +48,13 @@ tlpage1.from("#page1 p , #page1 button",{
     duration:2,
     ease: "power2.out"
 },"ab")
+
+// Register CTA
+if (registerCta) {
+    registerCta.addEventListener("click", () => {
+        document.querySelector("#page4")?.scrollIntoView({ behavior: "smooth" });
+    });
+}
 
 //moving circle
 page2.addEventListener("mousemove",(dets)=>{
