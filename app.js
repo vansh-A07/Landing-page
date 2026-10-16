@@ -118,14 +118,14 @@ cards.forEach(card => {
 
 //page4 animations
 input.forEach(field =>{
-    field.addEventListener("mouseenter",()=>{
-        field.dataset.originalPlaceholder = field.placeholder;
+    field.addEventListener("focusin",()=>{
+        if (!field.dataset.originalPlaceholder) {
+            field.dataset.originalPlaceholder = field.placeholder;
+        }
         field.placeholder="";
     })
-})
 
-input.forEach(field =>{
-    field.addEventListener("mouseleave",()=>{
+    field.addEventListener("focusout",()=>{
         field.placeholder = field.dataset.originalPlaceholder || field.placeholder;
     })
 })
