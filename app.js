@@ -5,7 +5,6 @@ let movebackward=document.getElementById("arrow-right");
 let circle=document.getElementById("circle")
 let page2=document.getElementById("page2-main");
 let cards = document.querySelectorAll('.card');
-let cardBackButtons = document.querySelectorAll('.card-back');
 let input=document.querySelectorAll("input");
 let typearea=document.querySelector("textarea");
 let sub=document.querySelector("#sub-button");
@@ -175,17 +174,25 @@ function decrement(){
     }
 }
 
-let timer=setInterval(increment,3000);
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+let timer = null;
 
-// Avoid moving the slider while a keyboard or pointer user is interacting with it.
+// Keep autoplay disabled for users who request reduced motion.
 function pauseSlider(){
-    clearInterval(timer);
+    if (timer !== null) {
+        clearInterval(timer);
+        timer = null;
+    }
 }
 function resumeSlider(){
-    clearInterval(timer);
-    timer=setInterval(increment,3000);
+    if (!prefersReducedMotion && timer === null) {
+        timer=setInterval(increment,3000);
+    }
 }
 
+resumeSlider();
+
+// Avoid moving the slider while a keyboard or pointer user is interacting with it.
 [moveforward, movebackward].forEach((control) => {
     control.addEventListener("mouseenter", pauseSlider);
     control.addEventListener("mouseleave", resumeSlider);
