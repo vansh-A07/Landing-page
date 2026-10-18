@@ -614,3 +614,27 @@ form #sub-button:hover {
 .icons a.yt i {
   color: #ff0000;
 }
+
+/* Respect users who request reduced motion at the CSS level as well as in JavaScript. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .card:hover,
+  button:hover,
+  #nav-elems a:hover,
+  .icons a:hover i {
+    transform: none;
+    scale: 1;
+  }
+}
