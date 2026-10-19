@@ -56,25 +56,27 @@ if (registerCta) {
 }
 
 //moving circle
-page2.addEventListener("mousemove",(dets)=>{
-    circle.style.display="block";
-    gsap.to(circle,{
-        scale:1.5,
-        delay:0.4,
-        duration:1,
+if (page2 && circle) {
+    page2.addEventListener("mousemove",(dets)=>{
+        circle.style.display="block";
+        gsap.to(circle,{
+            scale:1.5,
+            delay:0.4,
+            duration:1,
+        })
     })
-})
 
-page2.addEventListener("mousemove",(dets)=>{
-    gsap.to(circle,{
-        left:dets.x,
-        top:dets.y,
+    page2.addEventListener("mousemove",(dets)=>{
+        gsap.to(circle,{
+            left:dets.x,
+            top:dets.y,
+        })
     })
-})
 
-page2.addEventListener("mouseleave",(de)=>{
-    circle.style.display="none";
-})
+    page2.addEventListener("mouseleave",(de)=>{
+        circle.style.display="none";
+    })
+}
 
 //image rotation
 gsap.from("#image-container .images",{
@@ -147,64 +149,66 @@ function formValidation(event) {
 }
 
 //page5 animations
-moveforward.addEventListener("click",increment);
-movebackward.addEventListener("click",decrement);
+if (moveforward && movebackward && framewidth && num > 0) {
+    moveforward.addEventListener("click",increment);
+    movebackward.addEventListener("click",decrement);
 
-function increment(){
-    if(currentposition < num){
-        framewidth.style.transform =`translateX(${-x}%)`;
-        currentposition+=1;
-        x=x+indexcount;
-    }else{
-        currentposition=1;
-        framewidth.style.transform="translateX(0%)"
-        x=100/num;
+    function increment(){
+        if(currentposition < num){
+            framewidth.style.transform =`translateX(${-x}%)`;
+            currentposition+=1;
+            x=x+indexcount;
+        }else{
+            currentposition=1;
+            framewidth.style.transform="translateX(0%)"
+            x=100/num;
+        }
     }
+    function decrement(){
+        if(currentposition > 1){
+            x=x-indexcount;
+            framewidth.style.transform =`translateX(${-x}%)`;
+            currentposition-=1;
+        }else{
+            currentposition=num;
+            const lastPosition = (num - 1) * indexcount;
+            framewidth.style.transform =`translateX(-${lastPosition}%)`;
+            x=lastPosition;
+        }
+    }
+
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let timer = null;
+
+    // Keep autoplay disabled for users who request reduced motion.
+    function pauseSlider(){
+        if (timer !== null) {
+            clearInterval(timer);
+            timer = null;
+        }
+    }
+    function resumeSlider(){
+        if (!prefersReducedMotion && timer === null && !document.hidden) {
+            timer=setInterval(increment,3000);
+        }
+    }
+
+    resumeSlider();
+
+    // Avoid moving the slider while a keyboard or pointer user is interacting with it.
+    [moveforward, movebackward].forEach((control) => {
+        control.addEventListener("mouseenter", pauseSlider);
+        control.addEventListener("mouseleave", resumeSlider);
+        control.addEventListener("focusin", pauseSlider);
+        control.addEventListener("focusout", resumeSlider);
+    });
+
+    // Pause the autoplay when the tab is hidden to avoid unnecessary work.
+    document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+            pauseSlider();
+        } else {
+            resumeSlider();
+        }
+    });
 }
-function decrement(){
-    if(currentposition > 1){
-        x=x-indexcount;
-        framewidth.style.transform =`translateX(${-x}%)`;
-        currentposition-=1;
-    }else{
-        currentposition=num;
-        const lastPosition = (num - 1) * indexcount;
-        framewidth.style.transform =`translateX(-${lastPosition}%)`;
-        x=lastPosition;
-    }
-}
-
-const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-let timer = null;
-
-// Keep autoplay disabled for users who request reduced motion.
-function pauseSlider(){
-    if (timer !== null) {
-        clearInterval(timer);
-        timer = null;
-    }
-}
-function resumeSlider(){
-    if (!prefersReducedMotion && timer === null) {
-        timer=setInterval(increment,3000);
-    }
-}
-
-resumeSlider();
-
-// Avoid moving the slider while a keyboard or pointer user is interacting with it.
-[moveforward, movebackward].forEach((control) => {
-    control.addEventListener("mouseenter", pauseSlider);
-    control.addEventListener("mouseleave", resumeSlider);
-    control.addEventListener("focusin", pauseSlider);
-    control.addEventListener("focusout", resumeSlider);
-});
-
-// Pause the autoplay when the tab is hidden to avoid unnecessary work.
-document.addEventListener("visibilitychange", () => {
-    if (document.hidden) {
-        pauseSlider();
-    } else {
-        resumeSlider();
-    }
-});
