@@ -19,7 +19,7 @@
               <h4><em>logo</em></h4>
             </div>
             <div id="nav-elems">
-              <a href="#page1"><i class="fa-solid fa-house"></i>Home</a>
+              <a href="#page1"><i class="fa-solid fa-house" aria-hidden="true"></i>Home</a>
               <a href="#page3">Services</a>
               <a href="#page4">Register</a>
               <a href="#page5">About Us</a>
@@ -44,16 +44,16 @@
         </p>
         <button id="register-cta" type="button">
           Register!
-          <i class="fa-solid fa-arrow-right fa-rotate-by" style="--fa-rotate-angle: -45deg"></i>
+          <i class="fa-solid fa-arrow-right fa-rotate-by" style="--fa-rotate-angle: -45deg" aria-hidden="true"></i>
         </button>
       </div>
       <div id="page2">
         <div id="page2-main">
           <div id="circle">hello</div>
           <div id="image-container">
-            <div id="first" class="images"><img src="assets/image1.jpeg" alt="image1" /></div>
-            <div id="second" class="images"><img src="assets/image2.jpeg" alt="image2" /></div>
-            <div id="third" class="images"><img src="assets/image3.jpeg" alt="image3" /></div>
+            <div id="first" class="images"><img src="assets/image1.jpeg" alt="People exercising in the gym" /></div>
+            <div id="second" class="images"><img src="assets/image2.jpeg" alt="Gym training area" /></div>
+            <div id="third" class="images"><img src="assets/image3.jpeg" alt="Fitness equipment in the gym" /></div>
           </div>
           <div id="page2-hero">
             <h1>why even join a gym?</h1>
@@ -75,7 +75,7 @@
           <div id="card-container">
             <div class="card">
               <div class="services front">
-                <div class="service-image"><img src="assets/yoga.jpg" alt="yoga" /></div>
+                <div class="service-image"><img src="assets/yoga.jpg" alt="Yoga training" /></div>
                 <h3>Yoga</h3>
                 <p>
                   Lorem, ipsum dolor sit amet consectetur adipisicing elit.
@@ -98,7 +98,7 @@
             </div>
             <div class="card">
               <div class="services front">
-                <div class="service-image"><img src="assets/muscel training.jpg" alt="muscle" /></div>
+                <div class="service-image"><img src="assets/muscel training.jpg" alt="Muscle training" /></div>
                 <h3 id="muscle">Muscle Training</h3>
                 <p>
                   Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aperiam reiciendis, tempore ipsam obcaecati debitis reprehenderit sed molestias dolore nemo optio deleniti, quod aspernatur laborum magni voluptatum, soluta similique sapiente? Ut!
@@ -117,7 +117,7 @@
             </div>
             <div class="card">
               <div class="services front">
-                <div class="service-image"><img src="assets/rehabilation.jpg" alt="rehabilitation" /></div>
+                <div class="service-image"><img src="assets/rehabilation.jpg" alt="Rehabilitation training" /></div>
                 <h3>Rehabilitation</h3>
                 <p>
                   Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aperiam reiciendis, tempore ipsam obcaecati debitis reprehenderit sed molestias dolore nemo optio deleniti, quod aspernatur laborum magni voluptatum, soluta similique sapiente? Ut!
@@ -147,14 +147,18 @@
         <form onsubmit="formValidation(event)">
           <fieldset>
             <legend>Feedback</legend>
+            <label for="Name">Full Name</label>
             <input type="text" id="Name" placeholder="Full Name" aria-label="Full Name" autocomplete="name" required />
-            <input type="email" placeholder="Enter Your Email" aria-label="Email address" autocomplete="email" required />
-            <input type="tel" placeholder="Enter Phone No." aria-label="Phone number" inputmode="tel" autocomplete="tel" required />
+            <label for="email">Email address</label>
+            <input type="email" id="email" placeholder="Enter Your Email" aria-label="Email address" autocomplete="email" required />
+            <label for="phone">Phone number</label>
+            <input type="tel" id="phone" placeholder="Enter Phone No." aria-label="Phone number" inputmode="tel" autocomplete="tel" required />
+            <label for="textbox">Suggestions or feedback</label>
             <textarea id="textbox" placeholder="give suggestions" aria-label="Suggestions or feedback" required></textarea>
             <input id="sub-button" type="submit" value="Submit" />
           </fieldset>
         </form>
-        <div id="form-image"><img src="assets/form.jpg" alt="Feedback form" /></div>
+        <div id="form-image"><img src="assets/form.jpg" alt="Person completing a feedback form" /></div>
       </div>
     </div>
     <div id="page5">
@@ -163,24 +167,24 @@
         <button class="arrow" id="arrow-left" type="button" aria-label="Show previous gym image" title="Previous image"><img src="assets/arrow.jpg" alt="" /></button>
         <div id="image-slider">
           <div id="frame">
-            <div class="image-container"><img src="assets/gym1.jpg" alt="gym" /></div>
-            <div class="image-container"><img src="assets/gym2.jpg" alt="gym" /></div>
-            <div class="image-container"><img src="assets/gym3.jpg" alt="gym" /></div>
-            <div class="image-container"><img src="assets/gym4.jpg" alt="gym" /></div>
+            <div class="image-container"><img src="assets/gym1.jpg" alt="Gym interior" /></div>
+            <div class="image-container"><img src="assets/gym2.jpg" alt="Gym equipment and training area" /></div>
+            <div class="image-container"><img src="assets/gym3.jpg" alt="Gym workout area" /></div>
+            <div class="image-container"><img src="assets/gym4.jpg" alt="Gym fitness area" /></div>
           </div>
         </div>
         <button class="arrow" id="arrow-right" type="button" aria-label="Show next gym image" title="Next image"><img src="assets/arrow.jpg" alt="" /></button>
       </div>
       <div id="info">
-        <div class="about"><i id="o" class="fa-solid fa-phone"></i><div class="info"><h3>call Us</h3><p>+91 1234567890</p></div></div>
-        <div class="about"><i class="fa-solid fa-square-envelope"></i><div class="info"><h3>Send Us An Email</h3><p>email@.gmail.com</p></div></div>
-        <div class="about"><i class="fa-solid fa-location-dot"></i><div class="info"><h3>Location</h3><p>Lorem ipsum dolor sit amet.</p></div></div>
+        <div class="about"><i id="o" class="fa-solid fa-phone" aria-hidden="true"></i><div class="info"><h3>call Us</h3><p>+91 1234567890</p></div></div>
+        <div class="about"><i class="fa-solid fa-square-envelope" aria-hidden="true"></i><div class="info"><h3>Send Us An Email</h3><p>email@.gmail.com</p></div></div>
+        <div class="about"><i class="fa-solid fa-location-dot" aria-hidden="true"></i><div class="info"><h3>Location</h3><p>Lorem ipsum dolor sit amet.</p></div></div>
       </div>
       <div class="icons">
-        <a href="#" class="fb" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="twitter" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="insta" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="yt" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="#" class="fb" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+        <a href="#" class="twitter" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+        <a href="#" class="insta" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+        <a href="#" class="yt" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
       </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
