@@ -133,6 +133,10 @@ input.forEach(field =>{
 
 function formValidation(event) {
     event.preventDefault();
+
+    // Keep validation resilient if optional feedback UI is not rendered.
+    if (!popup || !sub) return;
+
     gsap.to(popup,{
         display:"block",
         scale:3,
@@ -141,7 +145,7 @@ function formValidation(event) {
             input.forEach(button=>{
                 button.value="";
             })
-            typearea.value="";
+            if (typearea) typearea.value="";
             sub.value="submit";
             popup.style.display="none";
         }
